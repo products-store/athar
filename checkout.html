@@ -213,10 +213,6 @@
                             <label for="commune">البلدية:</label>
                             <input type="text" id="commune" name="commune" required>
                         </div>
-                        <div class="form-group">
-                            <label for="address">العنوان التفصيلي:</label>
-                            <input type="text" id="address" name="address" required>
-                        </div>
                     </div>
                 </section>
 
@@ -315,11 +311,9 @@
                     if (this.value === 'home') {
                         homeDeliveryFields.style.display = 'block';
                         document.getElementById('commune').required = true;
-                        document.getElementById('address').required = true;
                     } else {
                         homeDeliveryFields.style.display = 'none';
                         document.getElementById('commune').required = false;
-                        document.getElementById('address').required = false;
                     }
                     updateDeliveryCost();
                 });
@@ -459,8 +453,7 @@
                 delivery: {
                     wilaya: formData.get('wilaya'),
                     method: formData.get('deliveryMethod'),
-                    commune: formData.get('commune') || 'غير مطبق',
-                    address: formData.get('address') || 'غير مطبق'
+                    commune: formData.get('commune') || 'غير مطبق'
                 },
                 items: savedCart,
                 prices: {
@@ -495,7 +488,7 @@
         }
 
         function sendOrderToDiscord(orderData) {
-            const webhookUrl = 'https://canary.discord.com/api/webhooks/1390378331488391261/FyhtoHaCCLXtdGoBZyvSPSoHUPsZn5LS0R9FxwbA7ehJH0mRT_drtftCD9SYd07ncVuT';
+            const webhookUrl = 'https://canary.discord.com/api/webhooks/1381563915087122523/5MwmHdsh2tnNr7bfi7QnoZYpN2rayaK2psuOMrQ0CffvPJLUE5pV_ltIy3-0IFcY0RTw';
             
             // تنسيق رسالة Discord
             let itemsText = orderData.items.map(item => 
@@ -504,8 +497,7 @@
             
             let deliveryText = orderData.delivery.method === 'home' ?
                 `🏠 التوصيل إلى المنزل
-                📍 البلدية: ${orderData.delivery.commune}
-                📍 العنوان: ${orderData.delivery.address}` :
+                📍 البلدية: ${orderData.delivery.commune}` :
                 `📦 التوصيل إلى مكتب البريد`;
             
             const embed = {
