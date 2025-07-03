@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السلة - أثر</title>
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-name">
+                <img src="images/logo.jpg" alt="شعار المتجر" class="logo">
+                <span class="store-name">ATHAR</span> 
+        </div>
+        <nav class="main-nav">
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+        </nav>
+        <div class="cart-and-hamburger">
+            <a href="cart.html" class="cart-icon-link">
+                <i class="fas fa-shopping-cart cart-icon"></i>
+                <span class="cart-count">0</span>
+            </a>
+            <button class="hamburger-menu" aria-label="قائمة التنقل">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="cart-page">
+        <h1>سلة التسوق</h1>
+        <div class="cart-items" id="cartItems">
+            <!-- سيتم ملؤها بالجافاسكربت -->
+            <p class="empty-cart-message">سلة التسوق فارغة</p>
+        </div>
+        <div class="cart-summary">
+            <h3>ملخص الطلب</h3>
+            <div class="summary-row">
+                <span>المجموع:</span>
+                <span id="cartTotal">0 د.ج</span>
+            </div>
+            <button class="checkout-btn" onclick="window.location.href='checkout.html'">إتمام الشراء</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // كود خاص بصفحة السلة
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCartFromStorage();
+            renderCartItems();
+        });
+
+        function renderCartItems() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartTotalElement = document.getElementById('cartTotal');
+            const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            if (savedCart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-cart-message">سلة التسوق فارغة</p>';
+                cartTotalElement.textContent = '0 د.ج';
+                return;
+            }
+
+            let total = 0;
+            cartItemsContainer.innerHTML = savedCart.map(item => {
+                total += item.price * item.quantity;
+                return `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h3>${item.name}</h3>
+                            <p>اللون: ${item.color} | المقاس: ${item.size}</p>
+                            <p class="item-price">${item.price} د.ج</p>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                        </div>
+                        <p class="item-total">${item.price * item.quantity} د.ج</p>
+                        <button class="remove-item" data-id="${item.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            cartTotalElement.textContent = `${total} د.ج`;
+
+            // إضافة event listeners للأزرار الجديدة
+            document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    updateQuantity(this.dataset.id, -1);
+                });
+            });
+
+            document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    updateQuantity(this.dataset.id, 1);
+                });
+            });
+
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    removeItem(this.dataset.id);
+                });
+            });
+        }
+
+        function updateQuantity(itemId, change) {
+            const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+            const itemIndex = savedCart.findIndex(item => item.id === itemId);
+            
+            if (itemIndex >= 0) {
+                savedCart[itemIndex].quantity += change;
+                
+                if (savedCart[itemIndex].quantity < 1) {
+                    savedCart.splice(itemIndex, 1);
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(savedCart));
+                renderCartItems();
+                updateCartCount();
+            }
+        }
+
+        function removeItem(itemId) {
+            const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+            const updatedCart = savedCart.filter(item => item.id !== itemId);
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+            renderCartItems();
+            updateCartCount();
+        }
+    </script>
+</body>
+</html>

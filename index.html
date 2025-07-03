@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATHAR | أثر</title>
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-name">
+                <img src="images/logo.jpg" alt="شعار المتجر" class="logo">
+                <span class="store-name">ATHAR</span> 
+        </div>
+        <nav class="main-nav">
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+        </nav>
+        <div class="cart-and-hamburger">
+            <a href="cart.html" class="cart-icon-link">
+                <i class="fas fa-shopping-cart cart-icon"></i>
+                <span class="cart-count">0</span>
+            </a>
+            <button class="hamburger-menu" aria-label="قائمة التنقل">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="product-page-content">
+        <section class="product-details-section">
+            <div class="product-images">
+                <div class="main-image-container">
+                    <img src="images/product-Light.gray-1.jpeg" alt="صورة المنتج الرئيسية" id="mainProductImage" class="main-product-image">
+                </div>
+                <div class="thumbnail-images">
+                    <img src="images/product-Light.gray-1.jpeg" alt="صورة مصغرة 1" class="thumbnail active" data-src="images/product-Light.gray-1.jpeg">
+                    <img src="images/product-Light.gray-2.jpeg" alt="صورة مصغرة 2" class="thumbnail" data-src="images/product-Light.gray-2.jpeg">
+                    <img src="images/product-Light.gray-3.jpeg" alt="صورة مصغرة 3" class="thumbnail" data-src="images/product-Light.gray-3.jpeg">
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h1 class="product-title">أونسومبل رجالي</h1>
+                <h2><p class="product-price">4500 د.ج</p></h2>
+
+<div class="product-options">
+    <div class="option-group">
+        <label>الألوان المتوفرة:</label>
+        <div class="colors-container" id="colorOptions">
+            <button class="color-option active" data-color="Light.gray" style="background-color: rgb(194, 194, 194);"></button>
+            <button class="color-option" data-color="black" style="background-color: black;"></button>
+            <button class="color-option" data-color="Dark.gray" style="background-color: rgb(70, 70, 70);"></button>
+            <button class="color-option" data-color="vert-bottle" style="background-color: #004c33ce;"></button>
+            <button class="color-option" data-color="marron" style="background-color: #5C4033;"></button>
+            <button class="color-option" data-color="bleu-nuit" style="background-color: #0F056B;"></button>
+        </div>
+        <!-- عنصر عرض اللون المختار -->
+<div id="selectedColorDisplay" class="selected-color-display" style="background-color: rgb(216, 216, 216);">
+    اللون: Light.gray
+</div>
+    </div>
+
+                    <div class="option-group">
+                        <label>المقاسات المتوفرة:</label>
+                        <div class="sizes-container" id="sizeOptions">
+                            <button class="size-option active" data-size="S">S</button>
+                            <button class="size-option" data-size="M">M</button>
+                            <button class="size-option" data-size="L">L</button>
+                            <button class="size-option" data-size="XL">XL</button>
+                            <button class="size-option" data-size="XXL">XXL</button>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label for="quantity">عدد القطع:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+                    </div>
+                </div>
+
+<!-- داخل قسم product-info، قبل زر add-to-cart-btn -->
+<div class="product-buttons">
+    <button class="checkout-now-btn" onclick="window.location.href='checkout.html'">إتمام الشراء</button>
+    <button class="add-to-cart-btn" id="addToCartBtn">أضف إلى السلة</button>
+</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
