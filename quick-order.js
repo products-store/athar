@@ -131,7 +131,7 @@ function trackPurchase(order) {
     let currentDeliveryPrice = 0;
     let selectedWilayaData = null;
     let selectedDeliveryMethod = 'office'; // Default delivery method
-    const productPrice = 4500; // سعر المنتج
+    const productPrice = 4800; // سعر المنتج
 
     // --- Functions ---
 
@@ -464,4 +464,5 @@ if (webhookSent) {
         saveInfoOnInput();
     }));
     quickCommuneInput.addEventListener('input', saveInfoOnInput);
+
 });
