@@ -1,20 +1,6 @@
-// دالة تتبع بدء إتمام الشراء
 function trackInitiateCheckout(cart) {
-    if (typeof ttq !== 'undefined') {
-        const contents = cart.map(item => ({
-            content_id: item.id,
-            content_name: item.name,
-            content_type: 'product',
-            quantity: item.quantity,
-            price: item.price
-        }));
-        const totalValue = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-        ttq.track('InitiateCheckout', {
-            contents: contents,
-            value: totalValue,
-            currency: 'DZD'
-        });
+    if (typeof trackMetaInitiateCheckout !== 'undefined') {
+        trackMetaInitiateCheckout(cart);
     }
 }
 
