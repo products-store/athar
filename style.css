@@ -424,9 +424,9 @@ button:hover {
 
 /* --- Existing Color Buttons --- */
 .color-btn[data-color="black"] {
-    background-color: #333;
+    background-color: #000000;
     color: var(--white);
-    border-color: #333;
+    border-color: #000000;
 }
 .color-btn[data-color="black"].active {
     outline: 2px solid var(--primary-color);
@@ -1885,9 +1885,9 @@ button:hover {
 
 /* --- New Color Buttons --- */
 .color-btn[data-color="black"] {
-    background-color: #333;
+    background-color: #000000;
     color: var(--white);
-    border-color: #333;
+    border-color: #000000;
 }
 .color-btn[data-color="black"].active {
     outline: 2px solid var(--primary-color);
@@ -1934,3 +1934,4 @@ button:hover {
     outline-offset: 2px;
 
 }
+
