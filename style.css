@@ -1895,9 +1895,9 @@ button:hover {
 }
 
 .color-btn[data-color="farmelitar"] {
-    background-color: #20313c;
+    background-color: #1c2526;
     color: var(--white);
-    border-color: #20313c;
+    border-color: #1c2526;
 }
 .color-btn[data-color="farmelitar"].active {
     outline: 2px solid var(--primary-color);
@@ -1925,11 +1925,12 @@ button:hover {
 }
 
 .color-btn[data-color="brown"] {
-    background-color: #6f4e37;
+    background-color: #47352a;
     color: var(--white);
-    border-color: #6f4e37;
+    border-color: #47352a;
 }
 .color-btn[data-color="brown"].active {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
+
 }
