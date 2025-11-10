@@ -60,53 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'المنيعة', home: 1100, office: null, cancel: 200 }
     ];
 
-
-
-
-
-
-
-
-
-
-
-// ✅ إضافة دالة تتبع TikTok للشراء
 function trackPurchase(order) {
-    if (typeof ttq !== 'undefined') {
-        const contents = order.items.map(item => ({
-            content_id: item.id,
-            content_name: item.name,
-            content_type: 'product',
-            quantity: item.quantity,
-            price: item.price
-        }));
-
-        ttq.track('Purchase', {
-            contents: contents,
-            value: order.totalAmount,
-            currency: 'DZD',
-            order_id: order.id
-        });
+    if (typeof trackMetaPurchase !== 'undefined') {
+        trackMetaPurchase(order);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     // --- DOM Elements ---
     const quickOrderForm = document.getElementById('quick-order-form');
