@@ -1,7 +1,7 @@
 // --- Product Data Definition ---
     const productDetails = {
         name: "قميص رجالي أنيق",
-        price: 4500,
+        price: 4800,
         imagePrefix: "images/shirt-",
         colors: {
             'black': {
@@ -315,3 +315,4 @@ document.addEventListener('DOMContentLoaded', () => {
         price: productDetails.price
     });
 });
+
