@@ -153,53 +153,23 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('qudwahCart', JSON.stringify(cart));
     };
 
-    // --- TikTok Pixel Tracking Functions ---
-    function trackTikTokEvent(eventName, parameters = {}) {
-        if (typeof ttq !== 'undefined') {
-            ttq.track(eventName, parameters);
-        }
+function trackViewContent(product) {
+    if (typeof trackMetaViewContent !== 'undefined') {
+        trackMetaViewContent(product);
     }
+}
 
-    function trackAddToCart(product) {
-        trackTikTokEvent('AddToCart', {
-            contents: [{
-                content_id: product.id,
-                content_name: product.name,
-                content_type: 'product',
-                quantity: product.quantity,
-                price: product.price
-            }],
-            value: product.price * product.quantity,
-            currency: 'DZD'
-        });
+function trackAddToCart(product) {
+    if (typeof trackMetaAddToCart !== 'undefined') {
+        trackMetaAddToCart(product);
     }
+}
 
-    function trackPurchase(order) {
-        const contents = order.items.map(item => ({
-            content_id: item.id,
-            content_name: item.name,
-            content_type: 'product',
-            quantity: item.quantity,
-            price: item.price
-        }));
-
-        trackTikTokEvent('Purchase', {
-            contents: contents,
-            value: order.totalAmount,
-            currency: 'DZD',
-            order_id: order.id
-        });
+function trackPurchase(order) {
+    if (typeof trackMetaPurchase !== 'undefined') {
+        trackMetaPurchase(order);
     }
-
-    function trackViewContent(product) {
-        trackTikTokEvent('ViewContent', {
-            content_id: `${product.color}-${product.size}`,
-            content_name: product.name,
-            content_type: 'product',
-            price: product.price,
-            currency: 'DZD'
-        });
-    }
+}
 
     // --- Event Listeners ---
 
@@ -315,4 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
         price: productDetails.price
     });
 });
+
+
 
