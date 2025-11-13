@@ -1935,3 +1935,64 @@ button:hover {
 
 }
 
+
+/* أنماط زر "اشتري الآن" الجديد */
+.quick-order-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 18px;
+    padding: 15px 30px;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    text-align: center;
+    flex: 1;
+    min-width: 180px;
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    transition: all var(--transition-speed);
+    order: 1; /* لجعله يظهر أولاً */
+}
+
+.quick-order-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.5);
+}
+
+.add-to-cart-btn {
+    order: 2; /* لجعله يظهر ثانياً */
+    background-color: var(--accent-color);
+    color: var(--white);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.add-to-cart-btn:hover {
+    background-color: #218838;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.5);
+}
+
+/* تحسينات للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .quick-order-btn, .add-to-cart-btn {
+        width: 100%;
+    }
+}
+
+
+
+
+/* أضف هذا الكود في قسم أنماط الألوان في ملف style.css */
+
+.color-btn[data-color="dark-gray"] {
+    background-color: #4a5568;
+    color: var(--white);
+    border-color: #4a5568;
+}
+.color-btn[data-color="dark-gray"].active {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
