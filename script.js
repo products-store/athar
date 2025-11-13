@@ -15,7 +15,7 @@
                     'images/black-5.webp',
                     'images/black-6.webp'
                 ],
-                availableSizes: ['52', '54', '56', '58']
+                availableSizes: ['52', '54', '56']
             },
             'farmelitar': {
                 name: 'فارميليتار',
@@ -39,6 +39,21 @@
                 ],
                 availableSizes: ['52', '54', '56', '58']
             },
+
+
+            'dark-gray': {
+                name: 'رصاصي داكن',
+                main: 'images/dark-gray-1.webp',
+                thumbnails: [
+                    'images/dark-gray-1.webp',
+                    'images/dark-gray-2.webp',
+                    'images/dark-gray-3.webp',
+                    'images/dark-gray-4.webp'
+                ],
+                availableSizes: ['52', '54', '56', '58']
+            },
+
+
             'dark-purple': {
                 name: 'بنفسجي داكن',
                 main: 'images/dark-purple-1.webp',
@@ -48,7 +63,7 @@
                     'images/dark-purple-3.webp',
                     'images/dark-purple-4.webp'
                 ],
-                availableSizes: ['52', '54', '56', '58']
+                availableSizes: ['52', '56', '58']
             },
             'brown': {
                 name: 'بني',
@@ -63,6 +78,29 @@
             }
         }
     };
+
+const quickOrderBtn = document.querySelector('.quick-order-btn');
+
+if (quickOrderBtn) {
+    quickOrderBtn.addEventListener('click', () => {
+        // التمرير السلس إلى بطاقة الطلب المباشر
+        const quickOrderCard = document.getElementById('quick-order-card');
+        if (quickOrderCard) {
+            quickOrderCard.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+            
+            // إضافة تأثير بصرية للفت الانتباه
+            quickOrderCard.style.transition = 'all 0.5s ease';
+            quickOrderCard.style.boxShadow = '0 0 0 3px rgba(0, 123, 255, 0.5)';
+            
+            setTimeout(() => {
+                quickOrderCard.style.boxShadow = 'var(--box-shadow)';
+            }, 1500);
+        }
+    });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -248,30 +286,7 @@ function trackPurchase(order) {
         alert(`تم إضافة ${quantity} قطعة من المنتج إلى السلة!`);
     });
 
-    buyNowBtn.addEventListener('click', () => {
-        const quantity = parseInt(quantityInput.value);
-        const productId = `${selectedColor}-${selectedSize}`;
-        const colorName = productDetails.colors[selectedColor].name;
 
-        const existing = cart.findIndex(item => item.id === productId);
-        if (existing > -1) {
-            cart[existing].quantity += quantity;
-        } else {
-            cart.push({
-                id: productId,
-                name: productDetails.name,
-                color: colorName,
-                size: selectedSize,
-                price: productDetails.price,
-                quantity,
-                image: productDetails.colors[selectedColor].main
-            });
-        }
-
-        saveCartToLocalStorage();
-        updateGlobalCartCount();
-        window.location.href = 'cart.html';
-    });
 
     // --- Initialization ---
     updateProductDisplay(selectedColor);
@@ -285,6 +300,3 @@ function trackPurchase(order) {
         price: productDetails.price
     });
 });
-
-
-
