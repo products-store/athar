@@ -79,57 +79,59 @@ src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
     </div>
 </section>
 
-            <section class="product-info">
-                <!-- تم نقل السعر إلى مكان العنوان -->
-                <p class="product-price compact-price">4800 د.ج</p>
+<section class="product-info">
+    <!-- تم نقل السعر إلى مكان العنوان -->
+    <p class="product-price compact-price">4800 د.ج</p>
 
+    <div class="color-options compact-section">
+        <h2>الألوان المتوفرة:</h2>
+        <div class="colors">
+            <button class="color-btn active" data-color="black">أسود</button>
+            <button class="color-btn" data-color="farmelitar">فارميليتار</button>
+            <button class="color-btn" data-color="blue-far">بلو فار</button>
+            <button class="color-btn" data-color="dark-purple">بنفسجي داكن</button>
+            <button class="color-btn" data-color="dark-gray">رصاصي داكن</button>
+            <button class="color-btn" data-color="brown">بني</button>
+        </div>
+    </div>
+
+    <div class="size-options compact-section">
+        <h2>المقاسات:</h2>
+        <div class="sizes">
+            <button class="size-btn active" data-size="52">52</button>
+            <button class="size-btn" data-size="54">54</button>
+            <button class="size-btn" data-size="56">56</button>
+            <button class="size-btn" data-size="58">58</button>
+        </div>
+    </div>
+
+    <div class="quantity-selector compact-section">
+        <h2>الكمية:</h2>
+        <div class="quantity-control">
+            <button class="quantity-btn minus">-</button>
+            <input type="number" class="quantity-input" value="1" min="1">
+            <button class="quantity-btn plus">+</button>
+        </div>
+    </div>
+
+    <div class="action-buttons compact-buttons">
+        <button class="quick-order-btn">اشتري الآن</button>
+        <button class="add-to-cart-btn">أضف إلى السلة</button>
+    </div>
+
+    <!-- تم نقل الوصف إلى الأسفل -->
     <div class="product-description compact-description">
         <h2>وصف المنتج:</h2>
         <p>قميص يجمع بين البساطة والفخامة في تفاصيل دقيقة تليق بالرجل الأنيق.</p>
         <p>تصميم عصري يعكس الذوق الرفيع، وخامة جميلة تمنحك راحة وأناقة في كل لحظة.</p>
         <p>خيارك المثالي لإطلالة راقية تجمع بين الحداثة والوقار، بأسلوب يعبّر عن أناقتك وتميّزك.</p>
     </div>
-
-<div class="color-options compact-section">
-    <h2>الألوان المتوفرة:</h2>
-    <div class="colors">
-        <button class="color-btn active" data-color="black">أسود</button>
-        <button class="color-btn" data-color="farmelitar">فارميليتار</button>
-        <button class="color-btn" data-color="blue-far">بلو فار</button>
-        <button class="color-btn" data-color="dark-purple">بنفسجي داكن</button>
-        <button class="color-btn" data-color="brown">بني</button>
-    </div>
-</div>
-
-                <div class="size-options compact-section">
-                    <h2>المقاسات:</h2>
-                    <div class="sizes">
-                        <button class="size-btn active" data-size="52">52</button>
-                        <button class="size-btn" data-size="54">54</button>
-                        <button class="size-btn" data-size="56">56</button>
-                        <button class="size-btn" data-size="58">58</button>
-                    </div>
-                </div>
-
-                <div class="quantity-selector compact-section">
-                    <h2>الكمية:</h2>
-                    <div class="quantity-control">
-                        <button class="quantity-btn minus">-</button>
-                        <input type="number" class="quantity-input" value="1" min="1">
-                        <button class="quantity-btn plus">+</button>
-                    </div>
-                </div>
-
-                <div class="action-buttons compact-buttons">
-                    <!-- تم إزالة زر إتمام الشراء -->
-                    <button class="add-to-cart-btn">أضف إلى السلة</button>
-                </div>
-            </section>
+</section>
         </div>
 
         <!-- إضافة بطاقة الطلب المباشر -->
         <div class="container quick-order-container">
-            <div class="quick-order-card">
+            <div class="quick-order-card" id="quick-order-card">
                 <h2 class="page-title">الطلب المباشر</h2>
 
                 <form id="quick-order-form">
@@ -204,4 +206,5 @@ src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
 </body>
 
 </html>
+
 
