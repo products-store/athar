@@ -2041,3 +2041,47 @@ button:hover {
     }
 }
 
+
+/* إضافة هذا الكود في قسم أنماط المقاسات في ملف style.css */
+
+/* أزرار المقاسات المعطلة - بدون تأثيرات */
+.size-btn.disabled {
+    opacity: 0.5; /* شفافية */
+    cursor: not-allowed; /* تغيير شكل المؤشر */
+    pointer-events: none; /* منع جميع التفاعلات */
+    background-color: #f8f9fa; /* لون خلفية ثابت */
+    color: #6c757d; /* لون نص ثابت */
+    border-color: #dee2e6; /* لون حدود ثابت */
+    transform: none !important; /* إلغاء أي تحويلات */
+    box-shadow: none !important; /* إلغاء أي ظلال */
+}
+
+/* التأكد من عدم وجود تأثير hover على الأزرار المعطلة */
+.size-btn.disabled:hover {
+    background-color: #f8f9fa !important;
+    color: #6c757d !important;
+    border-color: #dee2e6 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* التأكد من عدم وجود تأثير active على الأزرار المعطلة */
+.size-btn.disabled:active {
+    background-color: #f8f9fa !important;
+    color: #6c757d !important;
+    border-color: #dee2e6 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* التأكد من عدم وجود تأثير focus على الأزرار المعطلة */
+.size-btn.disabled:focus {
+    background-color: #f8f9fa !important;
+    color: #6c757d !important;
+    border-color: #dee2e6 !important;
+    transform: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+
