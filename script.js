@@ -130,51 +130,60 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    // Update main image and thumbnails
-    const updateProductDisplay = (color) => {
-        const colorData = productDetails.colors[color];
-        if (!colorData) return;
+// --- تعديل دالة updateProductDisplay لإخفاء المقاسات غير المتوفرة ---
+const updateProductDisplay = (color) => {
+    const colorData = productDetails.colors[color];
+    if (!colorData) return;
 
-        mainProductImage.src = colorData.main;
+    mainProductImage.src = colorData.main;
 
-        thumbnailImages.forEach((thumb, index) => {
-            if (colorData.thumbnails[index]) {
-                thumb.src = colorData.thumbnails[index];
-                thumb.style.display = 'block';
-            } else {
-                thumb.style.display = 'none';
-            }
-            thumb.classList.remove('active');
-        });
-
-        if (thumbnailImages.length > 0 && colorData.thumbnails[0]) {
-            thumbnailImages[0].classList.add('active');
+    thumbnailImages.forEach((thumb, index) => {
+        if (colorData.thumbnails[index]) {
+            thumb.src = colorData.thumbnails[index];
+            thumb.style.display = 'block';
+        } else {
+            thumb.style.display = 'none';
         }
+        thumb.classList.remove('active');
+    });
 
-        colorButtons.forEach(btn => {
+    if (thumbnailImages.length > 0 && colorData.thumbnails[0]) {
+        thumbnailImages[0].classList.add('active');
+    }
+
+    colorButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.color === color) btn.classList.add('active');
+    });
+
+    // --- الكود الجديد: إخفاء وإظهار أزرار المقاسات بناءً على التوفر ---
+    sizeButtons.forEach(btn => {
+        const size = btn.dataset.size;
+        if (colorData.availableSizes.includes(size)) {
+            // المقاس متوفر - إظهار الزر
+            btn.style.display = 'block';
+            btn.removeAttribute('disabled');
+            btn.classList.remove('disabled');
+        } else {
+            // المقاس غير متوفر - إخفاء الزر
+            btn.style.display = 'none';
+            btn.setAttribute('disabled', 'true');
+            btn.classList.add('disabled');
             btn.classList.remove('active');
-            if (btn.dataset.color === color) btn.classList.add('active');
-        });
-
-        sizeButtons.forEach(btn => {
-            const size = btn.dataset.size;
-            if (colorData.availableSizes.includes(size)) {
-                btn.removeAttribute('disabled');
-                btn.classList.remove('disabled');
-            } else {
-                btn.setAttribute('disabled', 'true');
-                btn.classList.add('disabled');
-                btn.classList.remove('active');
-            }
-        });
-
-        if (!colorData.availableSizes.includes(selectedSize)) {
-            selectedSize = colorData.availableSizes[0] || '52';
-            sizeButtons.forEach(btn => btn.classList.remove('active'));
-            const defaultSizeBtn = document.querySelector(`.size-btn[data-size="${selectedSize}"]`);
-            if (defaultSizeBtn) defaultSizeBtn.classList.add('active');
         }
-    };
+    });
+
+    // التأكد من اختيار مقاس متوفر تلقائيًا
+    if (!colorData.availableSizes.includes(selectedSize)) {
+        selectedSize = colorData.availableSizes[0] || '52';
+        sizeButtons.forEach(btn => btn.classList.remove('active'));
+        const defaultSizeBtn = document.querySelector(`.size-btn[data-size="${selectedSize}"]`);
+        if (defaultSizeBtn) {
+            defaultSizeBtn.classList.add('active');
+            defaultSizeBtn.style.display = 'block'; // تأكيد إظهار الزر المختار
+        }
+    }
+};
 
     const handleColorChangeWithScroll = (color) => {
         selectedColor = color;
