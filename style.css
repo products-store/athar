@@ -1997,3 +1997,47 @@ button:hover {
     outline-offset: 2px;
 }
 
+
+/* تحسينات إضافية لأزرار المقاسات المخفية */
+.size-btn[disabled] {
+    display: none !important;
+}
+
+.size-btn.disabled {
+    display: none !important;
+}
+
+/* تحسين التخطيط لأزرار المقاسات */
+.sizes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+/* تحسينات للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .sizes {
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .size-btn {
+        flex: 0 0 calc(25% - 8px);
+        min-width: auto;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .sizes {
+        gap: 6px;
+    }
+    
+    .size-btn {
+        flex: 0 0 calc(25% - 6px);
+        padding: 8px 5px;
+        font-size: 14px;
+    }
+}
+
