@@ -15,7 +15,7 @@
                     'images/black-5.webp',
                     'images/black-6.webp'
                 ],
-                availableSizes: ['52', '54']
+                availableSizes: ['52', '54', '56', '58']
             },
             'farmelitar': {
                 name: 'فارميليتار',
@@ -63,7 +63,7 @@
                     'images/dark-purple-3.webp',
                     'images/dark-purple-4.webp'
                 ],
-                availableSizes: ['52', '56', '58']
+                availableSizes: ['52', '54', '56', '58']
             },
             'brown': {
                 name: 'بني',
@@ -74,7 +74,7 @@
                     'images/brown-3.webp',
                     'images/brown-4.webp'
                 ],
-                availableSizes: ['52', '54',]
+                availableSizes: ['52', '54', '56', '58']
             }
         }
     };
@@ -300,4 +300,5 @@ function trackPurchase(order) {
         price: productDetails.price
     });
 });
+
 
