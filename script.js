@@ -74,7 +74,7 @@
                     'images/brown-3.webp',
                     'images/brown-4.webp'
                 ],
-                availableSizes: ['52', '54', '56', '58']
+                availableSizes: ['52', '54',]
             }
         }
     };
@@ -300,3 +300,4 @@ function trackPurchase(order) {
         price: productDetails.price
     });
 });
+
