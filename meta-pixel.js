@@ -8,8 +8,8 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-// استبدل 'YOUR_PIXEL_ID' بمعرف البكسل الخاص بك
-fbq('init', 'YOUR_PIXEL_ID'); 
+// استبدل هذا الرقم ببكسلك الحقيقي
+fbq('init', '1474024530573881'); 
 fbq('track', 'PageView');
 
 // دوال التتبع للميتا بكسل
@@ -19,7 +19,7 @@ function trackMetaEvent(eventName, parameters = {}) {
     }
 }
 
-function trackViewContent(product) {
+function trackMetaViewContent(product) {
     trackMetaEvent('ViewContent', {
         content_name: product.name,
         content_type: 'product',
@@ -28,7 +28,7 @@ function trackViewContent(product) {
     });
 }
 
-function trackAddToCart(product) {
+function trackMetaAddToCart(product) {
     trackMetaEvent('AddToCart', {
         content_name: product.name,
         content_type: 'product',
@@ -42,7 +42,7 @@ function trackAddToCart(product) {
     });
 }
 
-function trackInitiateCheckout(cart) {
+function trackMetaInitiateCheckout(cart) {
     const contents = cart.map(item => ({
         id: item.id,
         quantity: item.quantity,
@@ -59,7 +59,7 @@ function trackInitiateCheckout(cart) {
     });
 }
 
-function trackPurchase(order) {
+function trackMetaPurchase(order) {
     const contents = order.items.map(item => ({
         id: item.id,
         quantity: item.quantity,
@@ -73,3 +73,12 @@ function trackPurchase(order) {
         num_items: order.items.length
     });
 }
+
+// تحقق من تحميل ميتا بكسل
+window.addEventListener('load', function() {
+    if (typeof fbq !== 'undefined') {
+        console.log('Meta Pixel loaded successfully');
+    } else {
+        console.error('Meta Pixel failed to load');
+    }
+});
